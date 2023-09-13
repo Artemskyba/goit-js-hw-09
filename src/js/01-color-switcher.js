@@ -1,6 +1,6 @@
-bodyEl = document.querySelector('.first-task-body');
-startBtnEl = document.querySelector('[data-start]');
-stopBtnEl = document.querySelector('[data-stop]');
+const bodyEl = document.querySelector('.first-task-body');
+const startBtnEl = document.querySelector('[data-start]');
+const stopBtnEl = document.querySelector('[data-stop]');
 
 let colorParty;
 
