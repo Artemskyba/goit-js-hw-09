@@ -1,4 +1,4 @@
-bodyEl = document.querySelector('body');
+bodyEl = document.querySelector('.first-task-body');
 startBtnEl = document.querySelector('[data-start]');
 stopBtnEl = document.querySelector('[data-stop]');
 
