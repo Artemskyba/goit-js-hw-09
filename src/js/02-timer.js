@@ -29,7 +29,6 @@ flatpickr("#datetime-picker",
   });
 
 function convertMs(ms) {
-
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
@@ -45,28 +44,31 @@ function convertMs(ms) {
 
 startBtnEl.addEventListener('click', onStartBtnClick);
 
+let intervalTimer;
+
 function onStartBtnClick() {
+  startBtnEl.disabled = true;
   setTimer()
-  const intervalTimer = setInterval(() => { 
-    setTimer(1000)}, 1000);
+  intervalTimer = setInterval(() => { 
+    setTimer()}, 1000);
 };
 
-function addLeadingZero(value) {
-  return value.toString().padStart(2, '0');
-};
-
-function setTimer(delay) {
+function setTimer() {
   let timerDateMs = new Date(inputDateEl.value).getTime() - new Date().getTime();
-
-  if (timerDateMs <= 0) {
-    startBtnEl.disabled = true;
-    clearInterval(intervalTimer);
-  };
 
   const {days, hours, minutes, seconds} = convertMs(timerDateMs);
   daysCounterEl.textContent = addLeadingZero(days);
   hoursCounterEl.textContent = addLeadingZero(hours);
   minutesCounterEl.textContent = addLeadingZero(minutes);
   secondsCounterEl.textContent = addLeadingZero(seconds);
-  timerDateMs -= delay;
+  timerDateMs -= 1000;
+
+  if (timerDateMs <= 0) {
+    startBtnEl.disabled = false;
+    clearInterval(intervalTimer);
+  }
+};
+
+function addLeadingZero(value) {
+  return value.toString().padStart(2, '0');
 };
