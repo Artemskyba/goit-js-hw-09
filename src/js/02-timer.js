@@ -19,7 +19,7 @@ flatpickr("#datetime-picker",
     minuteIncrement: 1,
 
     onClose(selectedDates) {
-      if (selectedDates[0] - new Date <= 0) {
+      if (selectedDates[0] - new Date() <= 0) {
         Notiflix.Notify.failure("Please choose a date in the future");
         startBtnEl.disabled = true;
       } else {
@@ -49,8 +49,7 @@ let intervalTimer;
 function onStartBtnClick() {
   startBtnEl.disabled = true;
   setTimer()
-  intervalTimer = setInterval(() => { 
-    setTimer()}, 1000);
+  intervalTimer = setInterval(setTimer, 1000);
 };
 
 function setTimer() {
@@ -64,7 +63,6 @@ function setTimer() {
   timerDateMs -= 1000;
 
   if (timerDateMs <= 0) {
-    startBtnEl.disabled = false;
     clearInterval(intervalTimer);
   }
 };
