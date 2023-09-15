@@ -12,13 +12,6 @@ bodyEl.append(wrapper);
 bodyEl.style.width = '100vh';
 bodyEl.style.height = '100vh';
 
-wrapper.style.position = 'absolute';
-wrapper.style.top = '50%';
-wrapper.style.left = '50%';
-wrapper.style.transform = 'translate(-50%, -50%)';
-wrapper.style.display = 'flex';
-wrapper.style.gap = '20px';
-
 stopBtnEl.disabled = true;
 stopBtnEl.style.width = '110px';
 stopBtnEl.style.height = '40px';
