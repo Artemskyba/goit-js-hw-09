@@ -57,15 +57,16 @@ function addLeadingZero(value) {
 
 function setTimer(delay) {
   let timerDateMs = new Date(inputDateEl.value).getTime() - new Date().getTime();
+
+  if (timerDateMs <= 0) {
+    startBtnEl.disabled = true;
+    clearInterval(intervalTimer);
+  };
+
   const {days, hours, minutes, seconds} = convertMs(timerDateMs);
   daysCounterEl.textContent = addLeadingZero(days);
   hoursCounterEl.textContent = addLeadingZero(hours);
   minutesCounterEl.textContent = addLeadingZero(minutes);
   secondsCounterEl.textContent = addLeadingZero(seconds);
   timerDateMs -= delay;
-
-  if (timerDateMs < 0) {
-  startBtnEl.disabled = true;
-  clearInterval(intervalTimer);
-  };
 };
