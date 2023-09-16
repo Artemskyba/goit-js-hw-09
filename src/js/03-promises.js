@@ -33,11 +33,15 @@ function onFormSubmit(e) {
       createPromise(positionValue, positionValue === 1 ? delayValue : stepValue)
         .then(({ position, delay }) => {
           totalDelay += delay;
-          Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${totalDelay}ms`);
+          Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${totalDelay}ms`, {
+            useIcon: false,
+          });
         })
         .catch(({ position, delay }) => {
           totalDelay += delay;;
-          Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${totalDelay}ms`)
+          Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${totalDelay}ms`, {
+            useIcon: false,
+          })
         })
         .finally(() => {
           positionValue += 1;
