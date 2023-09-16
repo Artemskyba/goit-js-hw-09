@@ -20,7 +20,12 @@ flatpickr("#datetime-picker",
 
     onClose(selectedDates) {
       if (selectedDates[0] - new Date() <= 0) {
-        Notiflix.Notify.failure("Please choose a date in the future");
+        Notiflix.Notify.failure("Please choose a date in the future", {
+          width: '350px',
+          fontSize: '18px',
+          opacity: 0.8,
+          borderRadius: '15px',
+        });
         startBtnEl.disabled = true;
       } else {
         startBtnEl.disabled = false;
@@ -64,6 +69,11 @@ function setTimer() {
 
   if (timerDateMs <= 0) {
     clearInterval(intervalTimer);
+    Notiflix.Notify.success('Your time has come!', {
+      fontSize: '18px',
+      opacity: 0.8,
+      borderRadius: '15px',
+    });
   }
 };
 
